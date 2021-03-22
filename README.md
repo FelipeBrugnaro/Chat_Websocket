@@ -2,11 +2,11 @@
 
 Aplicação Chat Websocket construído com a linguagem PHP e utilizando o framework Ratchet
 
-## :pencil: Pré Requisitos
+## Pré Requisitos
 - PHP
 - [Composer](https://getcomposer.org/download/)
 
-## :construction_worker: Instalação
+## Instalação
 Após fazer o clone do repositório na sua máquina digite o seguinte comando no terminal:
 
 ```bash
