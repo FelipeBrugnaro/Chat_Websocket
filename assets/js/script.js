@@ -1,60 +1,40 @@
-var conn = new WebSocket('ws://localhost:8080');    
+const conn = new WebSocket('ws://localhost:8080');    
+    
+$("#formchat").submit((e) => {
+    e.preventDefault();
 
-conn.onmessage = function(e) {
-    showMessages('other', e.data);
-};
+    const message  = $("input[name='message']");
+    const username = $("input[name='username']");
 
-var form1 = document.getElementById('form1');
-var inp_message = document.getElementById('message');
-var inp_name = document.getElementById('name');
-var btn_env = document.getElementById('btn1');
-var area_content = document.getElementById('content');
-
-btn_env.addEventListener('click', function(){
-    if (inp_message.value != '') {
-        var msg = {'name': inp_name.value, 'msg': inp_message.value};
-        msg = JSON.stringify(msg);
-
-        conn.send(msg);
-
-        showMessages('me', msg);
-
-        inp_message.value = '';
+    if (message.val() !== '') {
+        const data = {
+            "username": username.val(), 
+            "message" : message.val()
+        };
+        conn.send(JSON.stringify(data));
+        showMessage('user', JSON.stringify(data));
+        message.val("");
     }
 });
 
-
-function showMessages(how, data) {
+function showMessage(user, data) {
     data = JSON.parse(data);
-
-    console.log(data);
-
-    if (how == 'me') {
+    if (user == 'user') {
         var img_src = "assets/imgs/dog_image.png";
-    } else if (how == 'other') {
+    } else if (user == 'other') {
         var img_src = "assets/imgs/cat_image.png";
     }
 
-    var div = document.createElement('div');
-    div.setAttribute('class', how);
+    const username = data.username;
+    const message  = data.message;
 
-    var img = document.createElement('img');
-    img.setAttribute('src', img_src);
+    const content = $(".content");
 
-    var div_txt = document.createElement('div');
-    div_txt.setAttribute('class', 'text');
-
-    var h5 = document.createElement('h5');
-    h5.textContent = data.name;
-
-    var p = document.createElement('p');
-    p.textContent = data.msg;
-
-    div_txt.appendChild(h5);
-    div_txt.appendChild(p);
-
-    div.appendChild(img);
-    div.appendChild(div_txt);
-
-    area_content.appendChild(div);
+    content.append('<div class="'+user+'"><img src="'+img_src+'"><div class="text"><h5>'+username+'</h5><p>'+message+'</p></div></div>');
+    content.animate({scrollTop: content.prop("scrollHeight")}, 1);
+    
 }
+
+conn.onmessage = function(e) {
+    showMessage('other', e.data);
+};
