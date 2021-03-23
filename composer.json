@@ -8,11 +8,13 @@
         }
     ],
     "require": {
-        "cboden/ratchet": "^0.4.2"
+        "cboden/ratchet": "^0.4.2",
+        "rain/raintpl": ">=3.0.0",
+        "slim/slim": "3.*"
     },
     "autoload": {
         "psr-4": {
-            "Lib\\": "lib"
+            "App\\": "App"
         }
     }
 }

@@ -35,7 +35,7 @@ a.exit {
     overflow-y: scroll;
 }
 
-form {
+form.chat {
     background: #34495e;
     width: 100vw;
     max-width: 100%;
@@ -44,8 +44,8 @@ form {
     left: 0;
     bottom: 0;
 }
-form > input {
-    width: calc(100% - 250px);
+form.chat > input {
+    width: calc(100% - 200px);
     height: 100%;
     border: 0;
     background-color: #34495e; 
@@ -53,11 +53,12 @@ form > input {
     padding: 20px;
 }
 
-aside > button{
-    width: 250px;
+form.chat > button{
+    width: 200px;
     height: 100%;
     border:0;
-    background-color: #e74c3c;
+    background-color: #2980b9;
+    border-radius: 0;
     color:#FFFFFF;
     text-align: center;
     cursor: pointer;

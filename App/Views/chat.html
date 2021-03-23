@@ -1,10 +1,3 @@
-<?php
-session_start();
-if(empty($_SESSION['username'])){
-    header('location: index.php');
-}
-$username = $_SESSION['username'];
-?>
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -16,13 +9,13 @@ $username = $_SESSION['username'];
     <title>Chat</title>
 </head>
 <body>
-    <a class="btn exit" href="sair.php">Sair</a>
+    <a class="btn exit" href="./sair">Sair</a>
     <section class="content">
         <h3>Chat Websocket</h3>
         <p>Digite para começar a conversar.</p>
     </section>
-    <form id="formchat" class="d-flex justify-content-between" method="post">
-        <input data-username class="d-none" value="<?php echo $username?>" type="text" name="username">
+    <form id="formchat" class="chat d-flex justify-content-between" method="post">
+        <input data-username class="d-none" value="{$username}" type="text" name="username">
         <input required data-message minlength="1" type="text" placeholder="Digite aqui sua mensagem..." name="message">
         <button type="submit" class="btn main-button">Enviar</button>
     </form>

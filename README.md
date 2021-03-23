@@ -1,6 +1,6 @@
 # Chat Websocket
 
-Aplicação Chat Websocket construído com a linguagem PHP e utilizando o framework Ratchet
+Aplicação Chat Websocket construído com a linguagem PHP e utilizando os frameworks Ratchet, Slim e RainTPL 
 
 ## Pré Requisitos
 - PHP
