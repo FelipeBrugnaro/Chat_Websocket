@@ -13,7 +13,16 @@ class LoginController {
                 "error" => "Oops, ocorreu um erro e não foi possível iniciar!"
             ]);
         }
-        if($_SESSION['username'] = $data['name']){
+        if(empty($data['image'])){
+            return $response->withStatus(401)->withJson([
+                "error" => "Oops, ocorreu um erro e não foi possível iniciar!"
+            ]);
+        }
+        $token = [
+            'name' => $data['name'],
+            'image' => $data['image']
+        ];
+        if($_SESSION['token'] = $token){
             return $response->withStatus(302)->withHeader('Location', './');
         } else {
             return $response->withStatus(401)->withJson([

@@ -13,8 +13,12 @@
     <div class="d-flex justify-content-center align-items-center">
         <form method="POST" action="login" class="login col-md-6">
             <div class="mb-3">
+                <label for="username" class="form-label">Imagem de perfil</label>
+                <input required type="url" class="form-control" id="image" name="image" placeholder="Digite o link da sua foto de perfil.">
+            </div>
+            <div class="mb-3">
                 <label for="username" class="form-label">Nome de usuário</label>
-                <input required type="text" class="form-control" id="username" name="name" placeholder="Digite seu usuário">
+                <input required type="text" class="form-control" id="username" name="name" placeholder="Digite seu usuário.">
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" name="sendForm" class="btn main-button">Entrar</button>

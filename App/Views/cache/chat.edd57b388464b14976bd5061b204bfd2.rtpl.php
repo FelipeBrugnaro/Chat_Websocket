@@ -16,6 +16,7 @@
     </section>
     <form id="formchat" class="chat d-flex justify-content-between" method="post">
         <input data-username class="d-none" value="<?php echo $username; ?>" type="text" name="username">
+        <input data-username class="d-none" value="<?php echo $image; ?>" type="text" name="image">
         <input required data-message minlength="1" type="text" placeholder="Digite aqui sua mensagem..." name="message">
         <button type="submit" class="btn main-button">Enviar</button>
     </form>

@@ -5,11 +5,13 @@ $("#formchat").submit((e) => {
 
     const message  = $("input[name='message']");
     const username = $("input[name='username']");
+    const image    = $("input[name='image']");
 
     if (message.val() !== '') {
         const data = {
             "username": username.val(), 
-            "message" : message.val()
+            "message" : message.val(),
+            "image"   : image.val()
         };
         conn.send(JSON.stringify(data));
         showMessage('user', JSON.stringify(data));
@@ -19,18 +21,18 @@ $("#formchat").submit((e) => {
 
 function showMessage(user, data) {
     data = JSON.parse(data);
-    if (user == 'user') {
-        var img_src = "assets/imgs/dog_image.png";
-    } else if (user == 'other') {
-        var img_src = "assets/imgs/cat_image.png";
-    }
 
     const username = data.username;
     const message  = data.message;
+    const image    = data.image;
+    
+    if(image === ""){
+        image = "assets/imgs/dog_image.png"
+    }
 
     const content = $(".content");
 
-    content.append('<div class="'+user+'"><img src="'+img_src+'"><div class="text"><h5>'+username+'</h5><p>'+message+'</p></div></div>');
+    content.append('<div class="'+user+'"><img src="'+image+'"><div class="text"><h5>'+username+'</h5><p>'+message+'</p></div></div>');
     content.animate({scrollTop: content.prop("scrollHeight")}, 1);
     
 }

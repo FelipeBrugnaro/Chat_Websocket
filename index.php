@@ -32,11 +32,12 @@ $app->post('/login', LoginController::class . ':login');
 $app->get('/', function($request, $response, $args){
     $page = new Page();
     $page->setTpl('chat', array(
-        'username' => $_SESSION['username']
+        'username' => $_SESSION['token']['name'],
+        'image' => $_SESSION['token']['image']
 ));
 
 })->add(function($request, $response, $next){
-    if($_SESSION['username'] ?? false){
+    if($_SESSION['token'] ?? false){
         $response = $next($request, $response);
     } else {
         return $response->withStatus(302)->withHeader('Location', './login');
